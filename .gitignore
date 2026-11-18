@@ -1,0 +1,6 @@
+# Nur die Website kommt online – Shopify-Dateien bleiben lokal
+sportforyou-theme/
+sportforyou-theme.zip
+*.csv
+ANLEITUNG-Shopify.md
+.DS_Store
