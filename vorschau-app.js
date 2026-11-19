@@ -90,11 +90,11 @@ const X = {
   ckout:['Qui si apre il checkout Shopify','Hier öffnet sich der Shopify-Checkout','The Shopify checkout opens here'], days14:['14 giorni','14 Tage','14 days'],
   fStreet:['Via Enrico Fermi 5','Enrico-Fermi-Straße 5','Via Enrico Fermi 5'], fAddr:['39100 Bolzano (BZ) – Italia','39100 Bozen (BZ) – Italien','39100 Bolzano (BZ) – Italia'], fQuote:['Richiedi un preventivo','Angebot anfragen','Request a quote'],
   h3K:['Court Royal · Universal Sport','Court Royal · Universal Sport','Court Royal · Universal Sport'], h3H:['Tutto per il tuo campo','Alles rund um den Platz','Everything for your court'], h3P:['Reti, pali, spazzole, spargisabbia, rulli e macchine – per circoli, hotel e comuni.','Netze, Pfosten, Schleppnetze, Sandstreuer, Walzen und Maschinen – für Vereine, Hotels und Gemeinden.','Nets, posts, drag nets, sand spreaders, rollers and machines – for clubs, hotels and municipalities.'], h3B:['Scopri gli accessori campo','Platzbedarf entdecken','Shop court equipment'],
-  h7K:['Slazenger','Slazenger','Slazenger'], h7H:['La palla di Wimbledon','Der Ball von Wimbledon','The ball of Wimbledon'], h7P:['Palline da tennis Slazenger – palla ufficiale di Wimbledon.','Tennisbälle von Slazenger – offizieller Ball von Wimbledon.','Slazenger tennis balls – official ball of Wimbledon.'], h7B:['Scopri le palline','Tennisbälle entdecken','Shop tennis balls'],
-  h5K:['Wellbeing','Wellbeing','Wellbeing'], h5H:['Recupera meglio, gioca di più','Besser regenerieren, mehr spielen','Recover better, play more'], h5P:['Superfood, integratori e protezione solare per il tuo benessere in campo e fuori.','Superfoods, Nahrungsergänzung und Sonnenschutz für dein Wohlbefinden – auf und neben dem Platz.','Superfoods, supplements and sun protection for your wellbeing – on and off the court.'], h5B:['Scopri Wellbeing','Wellbeing entdecken','Shop wellbeing'],
-  h6K:['FD Dolomites · AlpsKura','FD Dolomites · AlpsKura','FD Dolomites · AlpsKura'], h6H:['Pomate sportive','Sportsalben','Sports balms'], h6P:['Arnica e CBD dalle Alpi: per muscoli e articolazioni prima e dopo lo sport.','Arnika und CBD aus den Alpen: für Muskeln und Gelenke vor und nach dem Sport.','Arnica and CBD from the Alps: for muscles and joints before and after sport.'], h6B:['Scopri le pomate','Sportsalben entdecken','Shop sports balms'],
+  h7K:['Court Royal','Court Royal','Court Royal'], h7H:['Tutto per il campo da padel','Alles für den Padelplatz','Everything for the padel court'], h7P:['Reti, pali e accessori per campi da padel – qualità da torneo.','Netze, Pfosten und Zubehör für Padelplätze – in Turnierqualität.','Nets, posts and accessories for padel courts – tournament quality.'], h7B:['Scopri il padel','Padel entdecken','Shop padel'],
+  h5K:['Sports Tutor · PLAYMATE','Sports Tutor · PLAYMATE','Sports Tutor · PLAYMATE'], h5H:['Macchine lancia palle','Ballmaschinen','Ball machines'], h5P:['Per allenamento, scuole tennis e circoli – tennis, padel e pickleball.','Für Training, Tennisschulen und Vereine – Tennis, Padel und Pickleball.','For training, tennis schools and clubs – tennis, padel and pickleball.'], h5B:['Scopri le macchine','Ballmaschinen entdecken','Shop ball machines'],
+  h6K:['Court Royal','Court Royal','Court Royal'], h6H:['Reti da pickleball','Pickleball-Netze','Pickleball nets'], h6P:['Sistemi rete, pali e accessori per pickleball – per club e uso privato.','Netzsysteme, Pfosten und Zubehör für Pickleball – für Vereine und privat.','Net systems, posts and accessories for pickleball – for clubs and private use.'], h6B:['Scopri il pickleball','Pickleball entdecken','Shop pickleball'],
   fRights:['Tutti i diritti riservati','Alle Rechte vorbehalten','All rights reserved'],
-  fLegal:['Informazioni legali','Rechtliches','Legal'], fCookie:['Impostazioni cookie','Cookie-Einstellungen','Cookie settings'], fChannels:['Social media','Social Media','Social media'], fAdrH:['Indirizzo','Adresse','Address'], pPrev:['Indietro','Zurück','Previous'], pNext:['Avanti','Weiter','Next'], pShow:['{a}–{b} di {n} prodotti','{a}–{b} von {n} Produkten','{a}–{b} of {n} products'], pPage:['Pagina','Seite','Page'], pPer:['Mostra','Anzeigen','Show'], pAll:['Tutti','Alle','All'], fClaim:['Il tuo specialista degli sport di racchetta a Bolzano – con consulenza personale e spedizione rapida.','Dein Racketsport-Spezialist aus Bozen – mit persönlicher Beratung und schnellem Versand.','Your racket sports specialist in Bolzano – with personal advice and fast shipping.'],
+  fLegal:['Informazioni legali','Rechtliches','Legal'], fCookie:['Impostazioni cookie','Cookie-Einstellungen','Cookie settings'], fChannels:['Social media','Social Media','Social media'], fAdrH:['Indirizzo','Adresse','Address'], pPrev:['Indietro','Zurück','Previous'], pNext:['Avanti','Weiter','Next'], pShow:['{a}–{b} di {n} prodotti','{a}–{b} von {n} Produkten','{a}–{b} of {n} products'], pPage:['Pagina','Seite','Page'], pPer:['Mostra','Anzeigen','Show'], pAll:['Tutti','Alle','All'], fClaim:['Il tuo specialista per attrezzature da campo a Bolzano – reti, pali, cura del campo e macchine lancia palle per tennis, padel, pickleball e badminton.','Dein Spezialist für Platzbedarf aus Bozen – Netze, Pfosten, Platzpflege und Ballmaschinen für Tennis, Padel, Pickleball und Badminton.','Your court equipment specialist in Bolzano – nets, posts, court care and ball machines for tennis, padel, pickleball and badminton.'],
   qph:['Cerca prodotti, marchi, codici…','Produkte, Marken, Art.-Nr. suchen…','Search products, brands, SKU…']
 };
 Object.entries(X).forEach(([k, v]) => ['it','de','en'].forEach((l, i) => L[l][k] = v[i]));
@@ -129,7 +129,7 @@ const CT = {
   irrigazione:['Platzbewässerung','Court irrigation'],panche:['Bänke & Schiedsrichterstühle','Benches & umpire chairs'],'spazzole-scarpe':['Schuhbürsten','Shoe brushes'],
   rulli:['Walzen & Fräsen','Rollers & tillers'],spazzatrice:['Motor-Kehrmaschine','Motorised sweeper'],defibrillatori:['Defibrillatoren','Defibrillators'],
   pavimentazione:['Bodenbelag','Flooring'],sedia:['Schiedsrichterstuhl','Umpire chair'],
-  platz:['Platzbedarf','Court equipment'],marchi:['Marken','Brands'],'offerte-top':['Top-Angebote','Top deals'],bestseller:['Bestseller','Best sellers']
+  platz:['Alle Artikel','All products'],marchi:['Marken','Brands'],'offerte-top':['Top-Angebote','Top deals'],bestseller:['Bestseller','Best sellers']
 };
 const ctr = k => CT[k] || CT[k.split('-').slice(2).join('-')];
 function col(k, it, cats, parent, img){
@@ -159,13 +159,8 @@ col('badminton-campo','Accessori campo',['it/badminton/accessori-campo'],'badmin
 col('badminton-accordatrici','Macchine accordatrici e attrezzi',['it/badminton/macchine-accordatrici-e-attrezzi'],'badminton',ci('it/badminton/macchine-accordatrici-e-attrezzi'));
 /* Platzbedarf als eigener Menüpunkt – Unterseiten = Sportarten */
 const PLATZ_SP = ['tennis','padel','pickleball','badminton'];
-col('platz','Accessori campo',PLATZ_SP.flatMap(s=>COL[s+'-campo'].cats));
+col('platz','Tutti gli articoli',PLATZ_SP.flatMap(s=>COL[s+'-campo'].cats));
 PLATZ_SP.forEach(s => col('platz-'+s, COL[s].t, COL[s+'-campo'].cats, 'platz', COL[s+'-campo'].img));
-col('wellbeing','Wellbeing',['it/superfoods','it/pomate-sportive','it/integratori-alimentari','it/creme-solari']);
-col('superfoods','SuperFoods',['it/superfoods'],'wellbeing',ci('it/superfoods'));
-col('pomate-sportive','Pomate sportive',['it/pomate-sportive'],'wellbeing',ci('it/pomate-sportive'));
-col('integratori','Integratori alimentari',['it/integratori-alimentari'],'wellbeing',ci('it/integratori-alimentari'));
-col('creme-solari','Creme solari',['it/creme-solari'],'wellbeing',ci('it/creme-solari'));
 /* Accessori campo – Unterkategorien wie auf sportforyou.net */
 const sub3 = (parent, list) => list.forEach(([k, t, path]) => col(parent+'-'+k, t, [path], parent, ci(path)));
 sub3('tennis-campo', [
@@ -205,13 +200,14 @@ col('offerte-top','Offerte top',['it/offerte-top']).hidden = true;
 col('bestseller','Bestseller',['it/bestseller']).hidden = true;
 col('hot-rackets','Hot Rackets',['it/tennis/racchette','it/padel/racchette','it/pickleball/racchette'],null).hidden = true;
 
-const BRANDS = [
+const BRANDS_ALL = [
   ['Court Royal','184/md/court-royal_1','court-royal_1'],['Universal Sport','183/md/universal-sport_1','universal-sport_1'],
   ['Slazenger','156/md/slazenger_1','slazenger_1'],['Carlton','167/md/carlton_1'],['Slinger','157/md/slinger_1'],
   ['PLAYMATE','187/md/playmate_1','playmate_1'],['Sports Tutor','186/md/sports-tutor_1','sports-tutor_1'],
   ['Acerbis','178/md/acerbis_1','acerbis_1'],['XVST','179/md/xvst_1','xvst_1'],['FD Dolomites','177/md/fd-dolomites_1','fd-dolomites_1'],
   ['AlpsKura','181/md/it-alpskura','it/alpskura'],['SportForYou FIT','176/md/sportforyou-fit_1','sportforyou-fit_1']
 ];
+const BRANDS = BRANDS_ALL.filter(([n]) => D.prods.some(p => p.v === n));
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 BRANDS.forEach(([n, logo, path]) => { const c = col('brand-'+slug(n), n, path ? [path] : [], 'marchi', `${SITE}/media/image/manufacturer/${logo}.webp`); c.vendor = n; c.logo = c.img; });
 
@@ -220,6 +216,9 @@ const catMatch = (p, cats) => p.c.some(c => cats.some(k => c === k || c.startsWi
 const inC = k => { const c = COL[k]; if (!c) return []; return P.filter(p => catMatch(p, c.cats) || (c.vendor && p.v === c.vendor)); };
 /* leere Unterkategorien (z. B. nach dem Entfernen einer Marke) nicht in Menüs zeigen */
 Object.values(COL).forEach(c => { if (c.k !== 'marchi') c.sub = c.sub.filter(s => inC(s).length); });
+/* Nur Platzbedarf: Sport-Menü zeigt direkt Netze, Pfosten … */
+PLATZ_SP.forEach(sp => { const c = COL[sp+'-campo']; COL[sp].sub = c.sub.slice(); c.sub.forEach(x => COL[x].parent = sp); c.hidden = true; });
+MENU.splice(0, MENU.length, ...MENU.filter(k => COL[k].hidden || inC(k).length));
 const homeList = name => (D.home[name] || []).map(byH).filter(Boolean);
 /* tiefste passende Kategorie eines Produkts (für Breadcrumb & „Ähnliche“) */
 function colOf(p){
@@ -306,17 +305,17 @@ const ptile = (img, k, label) => `<a class="ptile" href="#/c/${k}" aria-label="$
 /* ---------- Startseite: Überblick zuerst, dann Kaufanreize ---------- */
 const MOS = {
   campo: ['court-royal-tn-200','court-royal-wimbledon','supporti-per-rete-singola-wimbledon','tappeto-livellatore-in-pe-rigido-court-royal','usp10'],
-  palle: ['slazenger-wimbledon-4pet','slazenger-championship-4pet','slazenger-wimbledon-3pet','slazenger-championship-3pet'],
-  well: ['proteine-di-riso-in-polvere-500g','magnesio-forte','spf-50-sun-protection-100ml','semi-di-chia-250g','propoli-spray'],
-  pomate: ['arnica-forte','pomade-sport-active-cbd','arnica-gel','pomade-sport-hot-cbd','arnica-thermo']
+  padel: ['court-royal-pn-8','court-royal-pn9','court-royal-pp73_1','court-royal-pp73-con-piastra_1'],
+  macch: ['tennis-tutor-pro','playmate-volley-dream','padel-tutor-plus','pickleball-tutor-mini'],
+  pickle: ['court-royal-sistema-rete-professionale','court-royal-pn5','court-royal-pn7','court-royal-pp73']
 };
 const pimgH = h => (D.prods.find(p=>p.h===h)||{}).img || '';
 /* Slides: Foto (f), Original-Banner (b) oder Produkt-Mosaik (m) */
 const HERO = [
-  {m:'campo', to:'tennis-campo', k:'h3'},
-  {m:'palle', to:'tennis-palle', k:'h7'},
-  {m:'well', to:'wellbeing', k:'h5'},
-  {m:'pomate', to:'pomate-sportive', k:'h6'}
+  {m:'campo', to:'tennis', k:'h3'},
+  {m:'padel', to:'padel', k:'h7'},
+  {m:'macch', to:'tennis-campo-macchine', k:'h5'},
+  {m:'pickle', to:'pickleball', k:'h6'}
 ];
 function heroSlide(s, i){
   const lazy = i ? 'loading="lazy"' : '';
