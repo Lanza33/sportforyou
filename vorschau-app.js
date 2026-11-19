@@ -355,7 +355,6 @@ function home(){
   </div></section>
   ${rail(COL['offerte-top'].t, homeList('Offerte top'), 'offerte-top', t('dealsD'), '')}
   <section class="sec mint"><div class="wrap"><div class="sec__head"><h2>${t('shopsport')}</h2></div><div class="sports">${sportCards()}</div></div></section>
-  <section class="sec"><div class="wrap kat"><a class="kat__cover" href="${KAT}" target="_blank" rel="noopener"><img src="bilder/katalog-cover.jpg" alt="${t('katK')}" loading="lazy"></a><div class="kat__txt"><span class="kicker">${t('katK')}</span><h2>${t('katH')}</h2><p>${t('katP')}</p><div class="kat__btns"><a class="btn" href="${KAT}" download>${t('katDl')}</a><a class="btn btn--ghost" href="${KAT}" target="_blank" rel="noopener">${t('katView')}</a></div><small>${t('katMeta')}</small></div></div></section>
   <section class="sec dark courts">
     <div class="wrap courts__head"><h2 style="font-size:clamp(30px,4vw,44px)">${t('b2bH')}</h2><p>${t('b2bP')}</p></div>
     <div class="courts__row">${[['padel','cpPadel','cpPadelP'],['tennis','cpTennis','cpTennisP'],['pickleball','cpPickle','cpPickleP']].map(([k,l,d])=>`<a class="courts__it" href="#/page/angebot" onclick="qType='${k}'"><img src="bilder/court-${k}.jpg" alt="${t(l)}" loading="lazy"><div><h3>${t(l)}</h3><p>${t(d)}</p><span class="btn btn--lime">${t('onReq')} →</span></div></a>`).join('')}</div>
@@ -363,6 +362,7 @@ function home(){
   <section class="sec sec--tight"><div class="wrap"><div class="sec__head"><h2>${t('brandsH')}</h2><a href="#/c/marchi">${t('viewall')} →</a></div>
     <div class="brands"><div class="brandlogos">${(()=>{const b=BRANDS.map(([n])=>{const c=COL['brand-'+slug(n)];return `<a href="#/c/${c.k}" title="${esc(n)}"><img src="${c.logo}" alt="${esc(n)}" loading="lazy"></a>`}).join('');return b+b})()}</div></div>
   </div></section>
+  <section class="sec"><div class="wrap kat"><a class="kat__cover" href="${KAT}" target="_blank" rel="noopener"><img src="bilder/katalog-cover.jpg" alt="${t('katK')}" loading="lazy"></a><div class="kat__txt"><span class="kicker">${t('katK')}</span><h2>${t('katH')}</h2><p>${t('katP')}</p><div class="kat__btns"><a class="btn" href="${KAT}" download>${t('katDl')}</a><a class="btn btn--ghost" href="${KAT}" target="_blank" rel="noopener">${t('katView')}</a></div><small>${t('katMeta')}</small></div></div></section>
   ${SHOP?'':'<!--'}<section class="sec dark"><div class="wrap nl">
     <div class="nl__big">-10%</div>
     <div><h2 style="font-size:clamp(28px,3.6vw,40px)">${t('nlH')}</h2><p style="margin:0;opacity:.85">${t('nlP')}</p></div>
