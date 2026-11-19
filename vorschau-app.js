@@ -31,6 +31,7 @@ const X = {
   tr3:['Reso entro 14 giorni','14 Tage Rückgabe','14-day returns'], tr3s:['semplice e veloce','einfach & schnell','quick and easy'],
   tr4:['Su misura','Persönlich','Personal'], tr4s:['consulenza da esperti','Beratung vom Profi','expert advice'],
   shopsport:['Acquista per sport','Nach Sport einkaufen','Shop by sport'],
+  kat:['Catalogo','Katalog','Catalogue'], katK:['Catalogo 2026','Katalog 2026','Catalogue 2026'], katH:['Tutto il nostro assortimento in un catalogo','Unser ganzes Sortiment in einem Katalog','Our full range in one catalogue'], katP:['Reti, pali, accessori per il campo, cura del campo e macchine lancia palle: 110 pagine da scaricare gratuitamente.','Netze, Pfosten, Platzzubehör, Platzpflege und Ballmaschinen: 110 Seiten zum kostenlosen Download.','Nets, posts, court accessories, court care and ball machines: 110 pages, free to download.'], katDl:['Scarica PDF','PDF herunterladen','Download PDF'], katView:['Sfoglia online','Online ansehen','View online'], katMeta:['PDF · 20 MB · in inglese','PDF · 20 MB · auf Englisch','PDF · 20 MB · in English'],
   hotD:['Racchette da tennis, padel e pickleball – le più richieste della stagione.','Tennis-, Padel- und Pickleballschläger – die Favoriten der Saison.','Tennis, padel and pickleball rackets – this season’s favourites.'],
   cpPadel:['Campo da padel','Padelplatz','Padel court'], cpTennis:['Campo da tennis','Tennisplatz','Tennis court'], cpPickle:['Campo da pickleball','Pickleballfeld','Pickleball court'],
   cpAcc:['Attrezzature e accessori campo','Platzausstattung & Zubehör','Court equipment & accessories'], cpSel:['Tipo di richiesta','Art der Anfrage','Request type'], onReq:['Richiedi offerta','Angebot anfragen','Request a quote'],
@@ -161,6 +162,7 @@ col('badminton-accordatrici','Macchine accordatrici e attrezzi',['it/badminton/m
 const PLATZ_SP = ['tennis','padel','pickleball','badminton'];
 col('platz','Tutti gli articoli',PLATZ_SP.flatMap(s=>COL[s+'-campo'].cats));
 PLATZ_SP.forEach(s => col('platz-'+s, COL[s].t, COL[s+'-campo'].cats, 'platz', COL[s+'-campo'].img));
+COL.platz.hidden = true; // nicht im Header – Seite bleibt über Links erreichbar
 /* Accessori campo – Unterkategorien wie auf sportforyou.net */
 const sub3 = (parent, list) => list.forEach(([k, t, path]) => col(parent+'-'+k, t, [path], parent, ci(path)));
 sub3('tennis-campo', [
@@ -335,6 +337,7 @@ function sportCards(){
       <a class="btn btn--ghost" href="#/c/${k}">${t('viewall')} →</a></div>`;
   }).join('');
 }
+const KAT = 'katalog/SportForYou-Katalog-2026.pdf';
 function home(){
   return `
   <section class="bh" id="hero">
@@ -349,6 +352,7 @@ function home(){
   </div></section>
   ${rail(COL['offerte-top'].t, homeList('Offerte top'), 'offerte-top', t('dealsD'), '')}
   <section class="sec mint"><div class="wrap"><div class="sec__head"><h2>${t('shopsport')}</h2></div><div class="sports">${sportCards()}</div></div></section>
+  <section class="sec"><div class="wrap kat"><a class="kat__cover" href="${KAT}" target="_blank" rel="noopener"><img src="bilder/katalog-cover.jpg" alt="${t('katK')}" loading="lazy"></a><div class="kat__txt"><span class="kicker">${t('katK')}</span><h2>${t('katH')}</h2><p>${t('katP')}</p><div class="kat__btns"><a class="btn" href="${KAT}" download>${t('katDl')}</a><a class="btn btn--ghost" href="${KAT}" target="_blank" rel="noopener">${t('katView')}</a></div><small>${t('katMeta')}</small></div></div></section>
   <section class="sec dark courts">
     <div class="wrap courts__head"><h2 style="font-size:clamp(30px,4vw,44px)">${t('b2bH')}</h2><p>${t('b2bP')}</p></div>
     <div class="courts__row">${[['padel','cpPadel','cpPadelP'],['tennis','cpTennis','cpTennisP'],['pickleball','cpPickle','cpPickleP']].map(([k,l,d])=>`<a class="courts__it" href="#/page/angebot" onclick="qType='${k}'"><img src="bilder/court-${k}.jpg" alt="${t(l)}" loading="lazy"><div><h3>${t(l)}</h3><p>${t(d)}</p><span class="btn btn--lime">${t('onReq')} →</span></div></a>`).join('')}</div>
@@ -649,10 +653,10 @@ function buildNav(){
       mega = `<div class="mega"><div class="wrap mega__in"><div class="mega__grid${n===3?' mega__grid--col':''}" style="--c:${cols}">${m.sub.map(s=>`<a href="#/c/${s}"><span class="mega__img">${catIcon(s)}</span>${COL[s].t}</a>`).join('')}</div><a class="mega__promo" href="#/c/${k}" style="background-image:linear-gradient(to top,rgba(4,30,20,.9),rgba(4,30,20,.1) 65%),url('bilder/menu-${k}.jpg')"><span class="kicker" style="color:var(--lime);opacity:1">${m.t}</span><h4>${t('all',m.t)} →</h4><small style="opacity:.8">${t('results',inC(k).length)}</small></a></div></div>`;
     }
     return `<div><a href="#/c/${k}" class="${k==='offerte-top'?'sale':''}">${m.t}</a>${mega}</div>`;
-  }).join('');
-  document.getElementById('mnavp').innerHTML = `<a class="logo" href="#/" onclick="toggleM(false);goHome(event)">${LOGO}</a><div style="height:16px"></div>` + MENU.filter(k=>!COL[k].hidden).map(k => { const m = COL[k]; return m.sub.length ? `<details><summary>${m.t}</summary><a href="#/c/${k}" onclick="toggleM(false)"><b>${k==='marchi'?t('allBrands'):t('all',m.t)}</b></a>${m.sub.map(s=>`<a href="#/c/${s}" onclick="toggleM(false)">${COL[s].t}</a>`).join('')}</details>` : `<details><summary style="${k==='offerte-top'?'color:var(--sale)':''}" onclick="location.hash='#/c/${k}';toggleM(false)">${m.t}</summary></details>`; }).join('')
+  }).join('') + `<div><a href="${KAT}" target="_blank" rel="noopener">${t('kat')}</a></div>`;
+  document.getElementById('mnavp').innerHTML = `<a class="logo" href="#/" onclick="toggleM(false);goHome(event)">${LOGO}</a><div style="height:16px"></div>` + MENU.filter(k=>!COL[k].hidden).map(k => { const m = COL[k]; return m.sub.length ? `<details><summary>${m.t}</summary><a href="#/c/${k}" onclick="toggleM(false)"><b>${k==='marchi'?t('allBrands'):t('all',m.t)}</b></a>${m.sub.map(s=>`<a href="#/c/${s}" onclick="toggleM(false)">${COL[s].t}</a>`).join('')}</details>` : `<details><summary style="${k==='offerte-top'?'color:var(--sale)':''}" onclick="location.hash='#/c/${k}';toggleM(false)">${m.t}</summary></details>`; }).join('') + `<details><summary onclick="window.open('${KAT}','_blank');toggleM(false)">${t('kat')} (PDF)</summary></details>`
     + `<div style="margin-top:20px;display:flex;gap:8px">${['de','it','en'].map(l=>`<button class="lang" style="display:inline-block" onclick="setLang('${l}')">${l.toUpperCase()}</button>`).join('')}</div><p style="font-size:14px;margin-top:20px">📞 <a href="tel:+390471347209">+39 0471 347209</a><br>💬 <a href="https://wa.me/393762188628">WhatsApp</a></p>`;
-  document.getElementById('fshop').innerHTML = MENU.filter(k=>!COL[k].hidden).map(k=>`<li><a href="#/c/${k}">${COL[k].t}</a></li>`).join('');
+  document.getElementById('fshop').innerHTML = MENU.filter(k=>!COL[k].hidden).map(k=>`<li><a href="#/c/${k}">${COL[k].t}</a></li>`).join('')+`<li><a href="${KAT}" target="_blank" rel="noopener">${t('kat')} (PDF)</a></li>`;
 }
 const chunk = (a,n) => a.reduce((r,x,i)=>(i%n?r[r.length-1].push(x):r.push([x]),r),[]);
 

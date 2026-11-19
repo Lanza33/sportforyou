@@ -668,6 +668,15 @@ em{font-style:normal;color:var(--lime)}
 [data-cartbtn],#cart,#sticky,.freehint{display:none!important}
 .pico{display:block;width:86%;height:86%;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
 .mega__img .pico{width:84%;height:84%}
+.kat{display:grid;gap:28px;align-items:center;background:var(--mint,#eef6ee);border-radius:20px;padding:28px}
+.kat__cover img{width:100%;max-width:260px;display:block;margin:0 auto;border-radius:8px;box-shadow:0 18px 40px rgba(0,36,26,.28);transition:transform .25s}
+.kat__cover:hover img{transform:translateY(-4px) rotate(-1deg)}
+.kat h2{font-size:clamp(26px,3.4vw,38px);margin:6px 0 12px}
+.kat p{max-width:52ch;margin:0 0 20px}
+.kat__btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.kat .btn--ghost{color:var(--green)}
+.kat small{opacity:.7}
+@media(min-width:750px){.kat{grid-template-columns:260px 1fr;padding:40px 48px;gap:48px}}
 </style>
 </head>
 <body>
@@ -754,8 +763,8 @@ em{font-style:normal;color:var(--lime)}
 </div>
 <div class="toast" id="toast"></div>
 
-<script src="vorschau-icons.js?v=20261119e"></script>
-<script src="vorschau-daten.js?v=20261119e"></script>
-<script src="vorschau-app.js?v=20261119e"></script>
+<script src="vorschau-icons.js?v=20261119f"></script>
+<script src="vorschau-daten.js?v=20261119f"></script>
+<script src="vorschau-app.js?v=20261119f"></script>
 </body>
 </html>
