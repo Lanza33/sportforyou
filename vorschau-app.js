@@ -251,7 +251,9 @@ const CICON = {platz:'net','platz-tennis':'racket','platz-padel':'padel','platz-
   'pickleball-racchette':'paddle','pickleball-palline':'wiffle','pickleball-campo':'net',
   'badminton-campo':'net','badminton-accordatrici':'machine',
   'superfoods':'leaf','pomate-sportive':'cream','integratori':'pill','creme-solari':'sun'};
-const catIcon = k => CICON[k] ? `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${CI[CICON[k]]}</svg>` : '';
+/* Produkt-Icons aus echten Produktfotos (Umriss als Maske) */
+const PICO = window.SFY_ICO || {};
+const catIcon = k => PICO[k] ? `<i class="pico" style="--m:url(${PICO[k]})" aria-hidden="true"></i>` : CICON[k] ? `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${CI[CICON[k]]}</svg>` : '';
 
 /* ---------- Speicher ---------- */
 const store = {get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -345,8 +347,8 @@ function home(){
     <div>${ICO.ret}<span><strong>${t('tr3')}</strong><small>${t('tr3s')}</small></span></div>
     <div>${ICO.store}<span><strong>${t('tr4')}</strong><small>${t('tr4s')}</small></span></div>
   </div></section>
-  <section class="sec sec--tight"><div class="wrap"><div class="sec__head"><h2>${t('shopsport')}</h2></div><div class="sports">${sportCards()}</div></div></section>
-  ${rail(COL['offerte-top'].t, homeList('Offerte top'), 'offerte-top', t('dealsD'), 'mint')}
+  ${rail(COL['offerte-top'].t, homeList('Offerte top'), 'offerte-top', t('dealsD'), '')}
+  <section class="sec mint"><div class="wrap"><div class="sec__head"><h2>${t('shopsport')}</h2></div><div class="sports">${sportCards()}</div></div></section>
   <section class="sec dark courts">
     <div class="wrap courts__head"><h2 style="font-size:clamp(30px,4vw,44px)">${t('b2bH')}</h2><p>${t('b2bP')}</p></div>
     <div class="courts__row">${[['padel','cpPadel','cpPadelP'],['tennis','cpTennis','cpTennisP'],['pickleball','cpPickle','cpPickleP']].map(([k,l,d])=>`<a class="courts__it" href="#/page/angebot" onclick="qType='${k}'"><img src="bilder/court-${k}.jpg" alt="${t(l)}" loading="lazy"><div><h3>${t(l)}</h3><p>${t(d)}</p><span class="btn btn--lime">${t('onReq')} →</span></div></a>`).join('')}</div>
