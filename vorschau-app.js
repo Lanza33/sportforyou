@@ -26,10 +26,11 @@ const L = {
 const X = {
   view:['Dettagli','Details ansehen','View details'], catNote:['Gli ordini online arriveranno presto – per ora chiedici direttamente.','Online-Bestellung folgt in Kürze – bis dahin einfach direkt anfragen.','Online ordering is coming soon – until then, just ask us directly.'],
   prev:['Indietro','Zurück','Back'], next:['Avanti','Weiter','Next'],
-  tr1:['Spedizione gratuita','Gratisversand','Free shipping'], tr1s:['in Italia da 99 €','in Italien ab 99 €','in Italy on orders over €99'],
+  tr1:['Spedizione in tutta Italia','Versand in ganz Italien','Shipping across Italy'], tr1s:['piccoli articoli gratis da 99 €','Kleinteile gratis ab 99 €','small items free over €99'],
   tr2:['Consegna rapida','Schnelle Lieferung','Fast delivery'], tr2s:['con OMEST Express Logistic','mit OMEST Express Logistic','with OMEST Express Logistic'],
   tr3:['Reso entro 14 giorni','14 Tage Rückgabe','14-day returns'], tr3s:['semplice e veloce','einfach & schnell','quick and easy'],
   tr4:['Su misura','Persönlich','Personal'], tr4s:['consulenza da esperti','Beratung vom Profi','expert advice'],
+  shipX:['Spedizione in Italia: {x}','Versand nach Italien: {x}','Shipping within Italy: {x}'], shipSm:['gratuita da 99 €','gratis ab 99 €','free on orders over €99'], shipBulk:['merce voluminosa','Sperrgut','bulky goods'], shipFr:['Spedizione gratuita in Italia','Gratisversand in Italien','Free shipping within Italy'], wgt:['Peso','Gewicht','Weight'],
   shopsport:['Acquista per sport','Nach Sport einkaufen','Shop by sport'],
   kat:['Catalogo','Katalog','Catalogue'], katK:['Catalogo 2026','Katalog 2026','Catalogue 2026'], katH:['Tutto il nostro assortimento in un catalogo','Unser ganzes Sortiment in einem Katalog','Our full range in one catalogue'], katP:['Reti, pali, accessori per il campo, cura del campo e macchine lancia palle: 110 pagine da scaricare gratuitamente.','Netze, Pfosten, Platzzubehör, Platzpflege und Ballmaschinen: 110 Seiten zum kostenlosen Download.','Nets, posts, court accessories, court care and ball machines: 110 pages, free to download.'], katDl:['Scarica PDF','PDF herunterladen','Download PDF'], katView:['Sfoglia online','Online ansehen','View online'], katMeta:['PDF · 20 MB · in inglese','PDF · 20 MB · auf Englisch','PDF · 20 MB · in English'],
   hotD:['Racchette da tennis, padel e pickleball – le più richieste della stagione.','Tennis-, Padel- und Pickleballschläger – die Favoriten der Saison.','Tennis, padel and pickleball rackets – this season’s favourites.'],
@@ -69,7 +70,7 @@ const X = {
   waQ:['Domanda su WhatsApp','Frage per WhatsApp','Ask on WhatsApp'], waQt:['Domanda su: ','Frage zu: ','Question about: '], waR:['Richiesta: ','Anfrage: ','Request: '],
   usp2:['Consegna con OMEST Express Logistic','Lieferung mit OMEST Express Logistic','Delivery with OMEST Express Logistic'], usp4:['Pagamento sicuro','Sichere Zahlung','Secure payment'],
   desc:['Descrizione','Beschreibung','Description'], readMore:['Leggi di più','Mehr lesen','Read more'], pdInfo:['Informazioni sul prodotto','Produktinformationen','Product information'], specs:['Dati tecnici','Technische Daten','Specifications'], shipret:['Spedizione e reso','Versand & Rückgabe','Shipping & returns'],
-  shipTxt:['Spedizione con OMEST Express Logistic{x}. Gratuita in Italia da 99 €. Reso entro 14 giorni.','Versand mit OMEST Express Logistic{x}. Gratis in Italien ab 99 €. 14 Tage Rückgaberecht.','Shipped with OMEST Express Logistic{x}. Free in Italy on orders over €99. 14-day returns.'],
+  shipTxt:['Spedizione con OMEST Express Logistic{x}. Reso entro 14 giorni.','Versand mit OMEST Express Logistic{x}. 14 Tage Rückgaberecht.','Shipped with OMEST Express Logistic{x}. 14-day returns.'],
   related:['Potrebbe piacerti anche','Das könnte dir auch gefallen','You may also like'],
   freeP:['Spedizione gratuita inclusa','Gratisversand inklusive','Free shipping included'], freeL:['Spedizione gratuita da 99 €','Gratisversand ab 99 €','Free shipping on orders over €99'],
   payS:['Pagamento sicuro con','Sicher bezahlen mit','Pay securely with'],
@@ -337,6 +338,8 @@ function sportCards(){
       <a class="btn btn--ghost" href="#/c/${k}">${t('viewall')} →</a></div>`;
   }).join('');
 }
+const shipLine = p => p.sh == null ? '' : p.sh === 0 ? t('shipFr') : t('shipX', eur(p.sh) + ' – ' + (p.sh < 20 ? t('shipSm') : t('shipBulk')));
+const kgFmt = n => n.toLocaleString(lang === 'en' ? 'en-IE' : lang === 'de' ? 'de-DE' : 'it-IT', {maximumFractionDigits: 2}) + ' kg';
 const KAT = 'katalog/SportForYou-Katalog-2026.pdf';
 function home(){
   return `
@@ -505,13 +508,13 @@ function product(h){
     <div class="pinfo">
       <span class="vendor">${esc(p.v)}</span><h1>${esc(p.t)}</h1>
       ${p.sku?`<p class="src" style="margin:0 0 8px">${t('sku')} ${esc(p.sku)}</p>`:''}
-      ${p.p == null ? `<div class="price onreq" style="font-size:24px">${t('onreq')}</div>` : `<div class="price">${eur(p.p)}</div><div class="tax">${t('tax')}</div>`}
+      ${p.p == null ? `<div class="price onreq" style="font-size:24px">${t('onreq')}</div>` : `<div class="price">${eur(p.p)}</div><div class="tax">${t('tax')}${shipLine(p)?` · <span class="shipl">${shipLine(p)}</span>`:''}</div>`}
       ${stock}${deliv}
       ${pshort?`<div class="rte pshort">${pshort}</div><a class="pmore" href="javascript:void 0" onclick="document.getElementById('pdet').scrollIntoView({behavior:'smooth'})">${t('readMore')} ↓</a>`:''}
       ${vars}
       ${buy}
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><button class="btn btn--ghost wish-inline" style="color:var(--green);flex:1" data-wish="${p.h}">${ICO.heart.replace('<svg','<svg width="18" height="18"')} ${t('wish')}</button><a class="btn btn--wa" style="flex:1" href="https://wa.me/393762188628?text=${encodeURIComponent(t('waQt')+((p.v?p.v+' ':'')+p.t))}" target="_blank" rel="noopener">${t('waQ')}</a></div>
-      <ul class="usp"><li>${ICO.truck} ${t('tr1')} ${t('tr1s')}</li><li>${ICO.clock} ${t('usp2')}</li><li>${ICO.ret} ${t('tr3')}</li><li>${ICO.shield} ${t('usp4')}</li></ul>
+      <ul class="usp"><li>${ICO.truck} ${shipLine(p) || t('tr1')+' – '+t('tr1s')}</li><li>${ICO.clock} ${t('usp2')}</li><li>${ICO.ret} ${t('tr3')}</li><li>${ICO.shield} ${t('usp4')}</li></ul>
     </div>
   </div>
   <section class="pdet" id="pdet">
@@ -520,7 +523,7 @@ function product(h){
       ${pdesc?`<div class="pdet__box"><h3>${t('desc')}</h3><div class="rte">${pdesc}</div></div>`:''}
       <div class="pdet__side">
         ${p.at&&p.at.length?`<div class="pdet__box"><h3>${t('specs')}</h3><table class="spec">${p.at.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}</table></div>`:''}
-        <div class="pdet__box"><h3>${t('shipret')}</h3><p>${t('shipTxt', deliv ? ` – ${t('deliv')}: ${esc(p.dl)}` : '')}</p><ul class="usp" style="margin:12px 0 0;background:none;padding:0"><li>${ICO.truck} ${t('tr1')} ${t('tr1s')}</li><li>${ICO.ret} ${t('tr3')}</li><li>${ICO.shield} ${t('usp4')}</li></ul></div>
+        <div class="pdet__box"><h3>${t('shipret')}</h3><p>${t('shipTxt', deliv ? ` – ${t('deliv')}: ${esc(p.dl)}` : '')}</p><ul class="usp" style="margin:12px 0 0;background:none;padding:0"><li>${ICO.truck} ${shipLine(p) || t('tr1')+' – '+t('tr1s')}</li>${p.kg && p.kgv ? `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8h12l2 12H4z"/><circle cx="12" cy="5.5" r="2.5"/></svg> ${t('wgt')}: ca. ${kgFmt(p.kg)}</li>` : ''}<li>${ICO.ret} ${t('tr3')}</li><li>${ICO.shield} ${t('usp4')}</li></ul></div>
       </div>
     </div>
   </section></div>
