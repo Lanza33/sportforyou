@@ -150,7 +150,7 @@ em{font-style:normal;color:var(--lime)}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(min-width:750px){.grid{grid-template-columns:repeat(3,1fr);gap:20px}}
 @media(min-width:990px){.grid--4{grid-template-columns:repeat(4,1fr)}}
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc(50% - 6px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc(50% - 6px);gap:12px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
 @media(min-width:750px){.rail{grid-auto-columns:calc(33.33% - 14px);gap:20px}}
 @media(min-width:990px){.rail{grid-auto-columns:calc(25% - 15px)}}
 .rail>*{scroll-snap-align:start}
@@ -413,7 +413,7 @@ em{font-style:normal;color:var(--lime)}
 .rm{border:0;background:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:13px}
 .xsell{padding:12px 0}
 .xsell h4{font-size:16px;margin:8px 0}
-.xsell__row{display:grid;grid-auto-flow:column;grid-auto-columns:150px;gap:10px;overflow-x:auto;padding-bottom:6px}
+.xsell__row{display:grid;grid-auto-flow:column;grid-auto-columns:150px;gap:10px;overflow-x:auto;overflow-y:hidden;padding-bottom:6px}
 .xs{border:1px solid var(--line);border-radius:var(--rs);padding:10px;font-size:13px;display:flex;flex-direction:column;gap:6px}
 .xs .line__img{width:100%;height:80px}
 .xs button{border:0;border-radius:999px;background:var(--green);color:#fff;font-weight:700;padding:7px;cursor:pointer;margin-top:auto}
@@ -763,8 +763,8 @@ em{font-style:normal;color:var(--lime)}
 </div>
 <div class="toast" id="toast"></div>
 
-<script src="vorschau-icons.js?v=20261119f"></script>
-<script src="vorschau-daten.js?v=20261119f"></script>
-<script src="vorschau-app.js?v=20261119f"></script>
+<script src="vorschau-icons.js?v=20261119g"></script>
+<script src="vorschau-daten.js?v=20261119g"></script>
+<script src="vorschau-app.js?v=20261119g"></script>
 </body>
 </html>
