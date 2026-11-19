@@ -38,6 +38,7 @@ const X = {
   cpAcc:['Attrezzature e accessori campo','Platzausstattung & Zubehör','Court equipment & accessories'], cpSel:['Tipo di richiesta','Art der Anfrage','Request type'], onReq:['Richiedi offerta','Angebot anfragen','Request a quote'],
   cpPadelP:['Indoor o outdoor, con vetri e struttura','Indoor oder outdoor, mit Glas und Gestell','Indoor or outdoor, with glass and frame'], cpTennisP:['Terra rossa, sintetico o cemento','Sand, Kunstrasen oder Hartplatz','Clay, artificial grass or hard court'], cpPickleP:['Campi singoli o multicampo','Einzelfeld oder Mehrfeldanlage','Single court or multi-court facility'],
   b2bK:['B2B · Circoli · Comuni','B2B · Vereine · Gemeinden','B2B · Clubs · Municipalities'],
+  cpK:['Campi su misura','Plätze nach Maß','Courts made to measure'],
   b2bH:['Il tuo campo, chiavi in mano','Dein kompletter Platz – schlüsselfertig','Your complete court, turnkey'],
   b2bP:['Campi completi da padel, tennis e pickleball per circoli, hotel e comuni – su richiesta, con consulenza e offerta personalizzata.','Komplette Padel-, Tennis- und Pickleballplätze für Vereine, Hotels und Gemeinden – auf Anfrage, mit Beratung und individuellem Angebot.','Complete padel, tennis and pickleball courts for clubs, hotels and municipalities – on request, with advice and a tailored quote.'],
   seeall:['Vedi tutto','Alles ansehen','See all'],
@@ -356,8 +357,16 @@ function home(){
   ${rail(COL['offerte-top'].t, homeList('Offerte top'), 'offerte-top', t('dealsD'), '')}
   <section class="sec mint"><div class="wrap"><div class="sec__head"><h2>${t('shopsport')}</h2></div><div class="sports">${sportCards()}</div></div></section>
   <section class="sec dark courts">
-    <div class="wrap courts__head"><h2 style="font-size:clamp(30px,4vw,44px)">${t('b2bH')}</h2><p>${t('b2bP')}</p></div>
-    <div class="courts__row">${[['padel','cpPadel','cpPadelP'],['tennis','cpTennis','cpTennisP'],['pickleball','cpPickle','cpPickleP']].map(([k,l,d])=>`<a class="courts__it" href="#/page/angebot" onclick="qType='${k}'"><img src="bilder/court-${k}.jpg" alt="${t(l)}" loading="lazy"><div><h3>${t(l)}</h3><p>${t(d)}</p><span class="btn btn--lime">${t('onReq')} →</span></div></a>`).join('')}</div>
+    <div class="wrap courts__in">
+      <div class="courts__txt">
+        <span class="courts__k">${t('cpK')}</span>
+        <h2>${t('b2bH')}</h2>
+        <p class="courts__lead">${t('b2bP')}</p>
+        <ul class="courts__list">${[['cpPadel','cpPadelP'],['cpTennis','cpTennisP'],['cpPickle','cpPickleP']].map(([l,d])=>`<li><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><div><b>${t(l)}</b><span>${t(d)}</span></div></li>`).join('')}</ul>
+        <a class="btn btn--lime courts__cta" href="#/page/angebot" onclick="qType='padel'">${t('onReq')} →</a>
+      </div>
+      <div class="courts__mo">${[['padel','cpPadel'],['tennis','cpTennis'],['pickleball','cpPickle']].map(([k,l])=>`<figure class="courts__im courts__im--${k}"><img src="bilder/platz-${k}.jpg" alt="${t(l)}" loading="lazy"><figcaption>${t(l)}</figcaption></figure>`).join('')}</div>
+    </div>
   </section>
   <section class="sec sec--tight"><div class="wrap"><div class="sec__head"><h2>${t('brandsH')}</h2><a href="#/c/marchi">${t('viewall')} →</a></div>
     <div class="brands"><div class="brandlogos">${(()=>{const b=BRANDS.map(([n])=>{const c=COL['brand-'+slug(n)];return `<a href="#/c/${c.k}" title="${esc(n)}"><img src="${c.logo}" alt="${esc(n)}" loading="lazy"></a>`}).join('');return b+b})()}</div></div>
